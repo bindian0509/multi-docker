@@ -1,0 +1,36 @@
+{
+    "AWSEBDcokerrunVersion" : 2,
+    "containerDefinitions" : [
+        {
+            "name" : "client",
+            "image" : "bindian0509/multi-client",
+            "hostname" : "client",
+            "essential" : false
+        },    
+        {
+            "name" : "server",
+            "image" : "bindian0509/multi-server",
+            "hostname" : "api",
+            "essential" : false
+        },        
+        {
+            "name" : "worker",
+            "image" : "bindian0509/multi-worker",
+            "hostname" : "worker",
+            "essential" : false
+        },        
+        {
+            "name" : "nginx",
+            "image" : "bindian0509/multi-nginx",
+            "hostname" : "nginx",
+            "essential" : true,
+            "portMappings" : [
+                {
+                    "hostPort" : 80,
+                    "containerPort" : 80
+                }
+            ],
+            "links" : ["client", "server"]
+        }
+    ]
+}
