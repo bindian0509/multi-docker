@@ -1,40 +1,63 @@
 {
     "AWSEBDockerrunVersion": 2,
-    "containerDefinitions" : [
+    "containerDefinitions": [
         {
-            "name" : "client",
-            "image" : "bindian0509/multi-client",
-            "hostname" : "client",
-            "essential" : false,
-            "memory" : 200
-        },    
+            "name": "client",
+            "image": "bindian0509/multi-client",
+            "hostname": "client",
+            "essential": false,
+            "memory": 200,
+            "command": [
+                "tail",
+                "-f",
+                "/bin/bash"
+            ]
+        },
         {
-            "name" : "server",
-            "image" : "bindian0509/multi-server",
-            "hostname" : "api",
-            "essential" : false,
-            "memory" : 200
-        },        
+            "name": "server",
+            "image": "bindian0509/multi-server",
+            "hostname": "api",
+            "essential": false,
+            "memory": 200,
+            "command": [
+                "tail",
+                "-f",
+                "/bin/bash"
+            ]
+        },
         {
-            "name" : "worker",
-            "image" : "bindian0509/multi-worker",
-            "hostname" : "worker",
-            "essential" : false,
-            "memory" : 200
-        },        
+            "name": "worker",
+            "image": "bindian0509/multi-worker",
+            "hostname": "worker",
+            "essential": false,
+            "memory": 200,
+            "command": [
+                "tail",
+                "-f",
+                "/bin/bash"
+            ]
+        },
         {
-            "name" : "nginx",
-            "image" : "bindian0509/multi-nginx",
-            "hostname" : "nginx",
-            "essential" : true,
-            "memory" : 200,
-            "portMappings" : [
+            "name": "nginx",
+            "image": "bindian0509/multi-nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "memory": 200,
+            "portMappings": [
                 {
-                    "hostPort" : 80,
-                    "containerPort" : 80
+                    "hostPort": 80,
+                    "containerPort": 80
                 }
             ],
-            "links" : ["client", "server"]
+            "links": [
+                "client",
+                "server"
+            ],
+            "command": [
+                "tail",
+                "-f",
+                "/bin/bash"
+            ]
         }
     ]
 }
