@@ -6,7 +6,7 @@
             "image": "bindian0509/multi-client",
             "hostname": "client",
             "essential": false,
-            "memory": 200,
+            "memory": 128,
             "command": [
                 "tail",
                 "-f",
@@ -18,7 +18,7 @@
             "image": "bindian0509/multi-server",
             "hostname": "api",
             "essential": false,
-            "memory": 200,
+            "memory": 128,
             "command": [
                 "tail",
                 "-f",
@@ -30,7 +30,7 @@
             "image": "bindian0509/multi-worker",
             "hostname": "worker",
             "essential": false,
-            "memory": 200,
+            "memory": 128,
             "command": [
                 "tail",
                 "-f",
@@ -42,7 +42,7 @@
             "image": "bindian0509/multi-nginx",
             "hostname": "nginx",
             "essential": true,
-            "memory": 200,
+            "memory": 128,
             "portMappings": [
                 {
                     "hostPort": 80,
