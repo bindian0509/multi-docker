@@ -25,10 +25,10 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: ap-south-1
-  app: multi-docker
-  env: MultiDocker-env
+  app: multidock
+  env: multidock-env
   bucket_name: elasticbeanstalk-ap-south-1-593174843467
-  bucket_path: multi-docker
+  bucket_path: multidock
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
