@@ -23,6 +23,7 @@ after_success:
   - docker push bindian0509/multi-worker
 
 deploy:
+  edge: true
   provider: elasticbeanstalk
   region: ap-south-1
   app: multidock
