@@ -15,7 +15,7 @@ after_success:
   - docker build -t bindian0509/multi-server ./server
   - docker build -t bindian0509/multi-worker ./worker
   # docker login 
-  - echo "$docker_password" | docker login -u "$docker_id" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # take these images and push them to docker hub
   - docker push bindian0509/multi-client
   - docker push bindian0509/multi-nginx
@@ -23,13 +23,12 @@ after_success:
   - docker push bindian0509/multi-worker
 
 deploy:
-  edge: true
   provider: elasticbeanstalk
   region: ap-south-1
-  app: multidock
-  env: multidock-env
-  bucket_name: elasticbeanstalk-ap-south-1-593174843467
-  bucket_path: multidock
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: multi-docker-app-nov
+  bucket_path: docker-multi-nov
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
